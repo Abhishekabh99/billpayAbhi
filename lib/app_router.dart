@@ -10,9 +10,9 @@ import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
   initialLocation: UserLocalStorage.getUserData()?.name != null
-      ? StoreLocalStorage.getStoreData()?.shopName != null
-          ? MainPath.main
-          : AuthPath.billPeStoreDetails
+      // ? StoreLocalStorage.getStoreData()?.shopName != null
+      ? MainPath.main
+      // : AuthPath.billPeStoreDetails
       : AuthPath.splash,
   routes: [
     ...mainRouter,

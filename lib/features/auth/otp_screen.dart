@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:billpe/features/auth/auth_api.dart';
 import 'package:billpe/features/auth/auth_router.dart';
@@ -223,16 +224,23 @@ class _OtpScreenState extends State<OtpScreen> {
                         return;
                       }
                       if (context.mounted) {
-                        if (user?.image?.trim().isNotEmpty ?? false) {
+                        // if (user?.image?.trim().isNotEmpty ?? false)
+                        if (false) {
                           context.go(MainPath.main);
                         } else {
-                          final store = StoreLocalStorage.getStoreData();
-                          if (store != null &&
-                              (store.shopName?.isNotEmpty ?? false)) {
-                            context.push(AuthPath.storeProfilePic, extra: {
-                              "phoneNumber": widget.phoneNumber,
-                              "storeID": store.id?.toString() ?? "",
-                            });
+                          // final store = StoreLocalStorage.getStoreData();
+                          // log("abhsihek here what is want below");
+                          // log("${store?.toJson()}");
+                          if (user != null &&
+                              (user.name?.isNotEmpty ?? false)) {
+                            // context.push(
+                            //   AuthPath.storeProfilePic,s
+                            //   extra: {
+                            //     "phoneNumber": widget.phoneNumber,
+                            //     "storeID": store.id?.toString() ?? "",
+                            //   },
+                            // );
+                            context.go(MainPath.main);
                           } else {
                             context.push(AuthPath.billPeStoreDetails, extra: {
                               "phoneNumber": widget.phoneNumber,

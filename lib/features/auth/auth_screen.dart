@@ -3,9 +3,6 @@ import 'package:billpe/features/auth/auth_router.dart';
 import 'package:billpe/global/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-// import 'package:otpless_flutter/otpless_flutter.dart';
-
-// final otplessFlutterPlugin = Otpless();
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -15,42 +12,12 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  // String _dataResponse = 'Unknown';
   final TextEditingController _phoneNumberController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
   }
-
-  // Future<void> startOtpless() async {
-  //   otplessFlutterPlugin.start((result) {
-  //     var message = "";
-  //     if (result['data'] != null) {
-  //       final token = result['data']['token'];
-  //       message = "token: $token";
-  //       otplessFlutterPlugin.signInCompleted();
-  //       _dataResponse = message;
-  //       log("Data Response: $_dataResponse");
-  //       context.push(AuthPath.billPeStoreDetails, extra: {
-  //         "phoneNumber": _phoneNumberController.text,
-  //       });
-  //     }
-  //   });
-  // }
-
-  // Future<void> openLoginPage() async {
-  //   otplessFlutterPlugin.openLoginPage((result) {
-  //     var message = "";
-  //     if (result['data'] != null) {
-  //       final token = result['data']['token'];
-  //       message = "token: $token";
-  //     }
-
-  //     _dataResponse = message;
-  //     log("Data Response: $_dataResponse");
-  //   });
-  // }
 
   @override
   void dispose() {
@@ -65,12 +32,6 @@ class _AuthScreenState extends State<AuthScreen> {
         elevation: 2,
         surfaceTintColor: Colors.white,
         shadowColor: Colors.black,
-        // leading: InkWell(
-        //   onTap: () {
-        //     context.pop();
-        //   },
-        //   child: const Icon(Icons.arrow_back_ios_new_outlined),
-        // ),
         title: const Text(
           "Login/Signup",
           style: TextStyle(

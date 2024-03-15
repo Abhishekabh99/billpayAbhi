@@ -34,7 +34,8 @@ class StoreModel {
     userId = json['user_id'];
     moduleId = json['module_id'];
     storeImage = json['store_image'];
-    shopName = json['shop_name'];
+    // shopName = json['shop_name'];
+    shopName = json['name'];
     latitude = json['latitude'];
     longitude = json['longitude'];
     address = json['address'];
@@ -52,7 +53,8 @@ class StoreModel {
     data['user_id'] = userId;
     data['module_id'] = moduleId;
     data['store_image'] = storeImage;
-    data['shop_name'] = shopName;
+    // data['shop_name'] = shopName;
+    data['name'] = shopName;
     data['latitude'] = latitude;
     data['longitude'] = longitude;
     data['address'] = address;
