@@ -1,0 +1,21 @@
+{
+    "storeDetailsStr": "Store Details",
+    "welcomeStr": "Welcome!",
+    "storeNameStrWithAstriks": "Store Name*",
+    "storeCategoryStrithAstriks": "Store Category*",
+    "whatsAppNumberStrWithAstriks": "Whatsapp Number*",
+    "storeAddressStrWithAstriks": "Store Address*",
+    "alternatePhoneNumberStr": "Alternate Phone Number",
+    "emailAddressStr": "E-mail Address",
+    "ownersFullNameStrWithAstriks": "Owner's full Name*",
+    "doYouHaveGstStr": "Do you have GST?",
+    "storeNameIsRequiredStr": "Store Name*",
+    "storeTypeIsRequiredStr": "Store Type*",
+    "storeAddressIsRequiredStr": "Store Address*",
+    "pleaseEnterAvalidPhoneNumberStr": "Please enter a valid phone number",
+    "pleaseEnterAvalidEmailIdStr": "Please enter a valid Email ID",
+    "storeOwnerNameIsRequiredStr": "Store Owner name*",
+    "otpVerificationStr": "OTP Verification",
+    "loginSignUpStr": "Login/Signup",
+    "enterPhoneNumberStr": "Enter phone Number"
+   }

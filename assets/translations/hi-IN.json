@@ -1,0 +1,21 @@
+{
+    "storeDetailsStr": "दुकान विवरण",
+    "welcomeStr": "स्वागत है!",
+    "storeNameStrWithAstriks": "दुकान का नाम*",
+    "storeCategoryStrithAstriks": "दुकान श्रेणी*",
+    "whatsAppNumberStrWithAstriks": "व्हाट्सएप नंबर*",
+    "storeAddressStrWithAstriks": "दुकान का पता*",
+    "alternatePhoneNumberStr": "वैकल्पिक फ़ोन नंबर",
+    "emailAddressStr": "ईमेल पता",
+    "ownersFullNameStrWithAstriks": "मालिक का पूरा नाम*",
+    "doYouHaveGstStr": "क्या आपके पास GST है?",
+    "storeNameIsRequiredStr": "दुकान का नाम*",
+    "storeTypeIsRequiredStr": "दुकान का प्रकार*",
+    "storeAddressIsRequiredStr": "दुकान का पता*",
+    "pleaseEnterAvalidPhoneNumberStr": "कृपया मान्य फ़ोन नंबर दर्ज करें",
+    "pleaseEnterAvalidEmailIdStr": "कृपया मान्य ईमेल आईडी दर्ज करें",
+    "storeOwnerNameIsRequiredStr": "दुकान मालिक का नाम*",
+    "otpVerificationStr": "OTP प्रमाणीकरण",
+    "loginSignUpStr": "लॉगिन/साइनअप",
+    "enterPhoneNumberStr": "फ़ोन नंबर दर्ज करें"
+   }
