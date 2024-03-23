@@ -1,10 +1,10 @@
-import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
-import 'package:billpe/views/stock/quick_add_screen.dart';
-import 'package:billpe/global/app_colors.dart';
-import 'package:billpe/views/stock/search_screen.dart';
+import 'package:billpe/service/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../model/searchProductResponse/product.dart';
+import '../../model/getProdcutResponse/get_prodcucts.dart';
+import '../../network/get_product_api.dart';
+import '../../network/profile_api.dart';
+import 'search_screen.dart';
 
 class StockScreen extends StatefulWidget {
   const StockScreen({Key? key}) : super(key: key);
@@ -21,7 +21,48 @@ class _StockScreenState extends State<StockScreen>
   @override
   void initState() {
     super.initState();
+
+    fetchProducts();
   }
+
+  Future<void> fetchProducts() async {
+    try {
+      // Fetch profile data to get store ID
+      final String token = LocalStorage.getToken()!;
+      final Map<String, dynamic> profileData =
+          await ProfileApi().fetchProfileData(token);
+
+      // Extract store ID from profile data
+      // final String storeId = profileData['store_id'].toString();
+      final String storeId = '3';
+      // Fetch products using the obtained store ID
+
+      final response = await GetProductApi.getProduct(storeId, token);
+
+      setState(() {
+        _allStock = response.products ?? [];
+      });
+    } catch (e) {
+      print('Error fetching products: $e');
+      // Handle error
+    }
+  }
+
+  // Future<void> fetchProducts() async {
+  //   try {
+  //     // Replace 'storeId' and 'token' with your actual values
+
+  //     final String storeId = '3';
+  //     final String token = LocalStorage.getToken()!;
+  //     final response = await GetProductApi.getProduct(storeId, token);
+  //     setState(() {
+  //       _allStock = response.products ?? [];
+  //     });
+  //   } catch (e) {
+  //     print('Error fetching products: $e');
+  //     // Handle error
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,20 +116,12 @@ class _StockScreenState extends State<StockScreen>
                 Expanded(
                   child: IconButton(
                     style: IconButton.styleFrom(
-                      backgroundColor: AppColors.primary,
+                      backgroundColor:
+                          Colors.blue, // Change to your desired color
                     ),
                     onPressed: () {
                       HapticFeedback.selectionClick();
-                      showModalBottomSheet(
-                        context: context,
-                        showDragHandle: true,
-                        enableDrag: true,
-                        isScrollControlled: true,
-                        useSafeArea: true,
-                        builder: (context) {
-                          return const QuickAddScreen();
-                        },
-                      );
+                      // Handle button press
                     },
                     icon: const Icon(
                       Icons.add,
@@ -108,19 +141,7 @@ class _StockScreenState extends State<StockScreen>
                     ),
                     onPressed: () {
                       HapticFeedback.selectionClick();
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return AiBarcodeScanner(
-                            onScan: (String value) {
-                              debugPrint(value);
-                            },
-                            onDetect: (BarcodeCapture barcodeCapture) {
-                              debugPrint(barcodeCapture.toString());
-                            },
-                          );
-                        },
-                      );
+                      // Handle button press
                     },
                     child: Image.asset(
                       "assets/icons/barcode_scanner.png",
@@ -221,11 +242,14 @@ class _StockScreenState extends State<StockScreen>
                               height: 80,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
-                                image: DecorationImage(
-                                  image:
-                                      NetworkImage(product.productImage ?? ''),
-                                  fit: BoxFit.cover,
-                                ),
+                                image: product.productImage != null &&
+                                        product.productImage!.isNotEmpty
+                                    ? DecorationImage(
+                                        image:
+                                            NetworkImage(product.productImage!),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : null, // Handle empty or null image URL
                               ),
                             ),
                             SizedBox(width: 16.0),
@@ -282,28 +306,3 @@ class _StockScreenState extends State<StockScreen>
     );
   }
 }
-
-
-
-//previous search button 
-// Card(
-//                     elevation: 4,
-//                     child: ClipRRect(
-//                       borderRadius: BorderRadius.circular(15),
-//                       child: TextFormField(
-//                         decoration: const InputDecoration(
-//                           border: InputBorder.none,
-//                           fillColor: Colors.white,
-//                           filled: true,
-//                           prefixIcon: Icon(
-//                             Icons.search,
-//                             size: 18,
-//                           ),
-//                           hintText: "Search",
-//                           hintStyle: TextStyle(
-//                             fontSize: 14,
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ),

@@ -351,7 +351,9 @@ class _StoreProfileScreenState extends State<StoreProfileScreen> {
                 style: ElevatedButton.styleFrom(
                   surfaceTintColor: Colors.grey,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  print(_store!.id);
+                },
                 icon: const Icon(Icons.add),
                 label: const Text(
                   "Add another store",

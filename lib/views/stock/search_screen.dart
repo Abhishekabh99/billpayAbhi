@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:billpe/model/searchProductResponse/product.dart';
 import 'package:billpe/service/local_storage.dart';
 import 'package:billpe/network/search_product_api.dart';
+import 'add_product_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -97,9 +98,13 @@ class _SearchScreenState extends State<SearchScreen> {
       itemBuilder: (context, index) {
         final product = _suggestions[index];
         return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(product.productImage ?? ""),
-          ),
+          leading:
+              product.productImage != null && product.productImage!.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(product.productImage!),
+                    )
+                  : Icon(Icons
+                      .image), // Placeholder icon if image URL is null or empty
           title: Text(product.productName ?? ''),
           subtitle: Text('Quantity: ${product.quantity}'),
           trailing: Text(
@@ -107,8 +112,14 @@ class _SearchScreenState extends State<SearchScreen> {
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            // Pass the selected product back to the StockScreen
-            Navigator.pop(context, product);
+            // Navigate to AddProductScreen with selected product
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    AddProductScreen(selectedProduct: product),
+              ),
+            );
           },
         );
       },
